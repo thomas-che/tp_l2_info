@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+ 	<head>
+   		<meta charset="utf-8">
+   		<link rel="stylesheet" href="style.css">
+   		<title>page exo2</title>
+	</head>
+ 	<body>
+		<ul>
+			<li>Pour acceder au site de meteo fr cliquer su la partie superieur de l image</li>
+			<li>Pour acceder aux previsions region centre cliquez sur la carte sur la zone centre de l image</li>
+			<li>Pour acceder aux previsions "ile de france" cliquez sur la carte sur la zone "ile de france"</li>
+		</ul>
+		
+		<img src="meteo.png" alt="Photo meteo france" usemap="#carte"/>
+		<map name="carte">
+			<area shape="rect" coords="0,0,318,110" href="http://www.meteofrance.com/accueil" title="cliquez dessus pour acceder a meteo fr" alt="zonne sup de la carte"/>
+			<area shape="rect" coords="160,110,180,144" href="http://www.meteofrance.com/previsions-meteo-france/ile-de-france/regin03" title="meteo ile de fr" alt="zone ile de france"/>
+			<area shape="rect" coords="130,150,170,190" href="http://www.meteofrance.com/previsions-meteo-france/centre-val-de-loire/regin07" title="meteo centre" alt="zone centre" />
+		</map>
+
+  	</body>	
+</html>
+
+<!-- valide w3c -->

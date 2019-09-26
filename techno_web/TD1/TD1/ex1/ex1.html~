@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+ 	<head>
+   		<meta charset="utf-8">
+   		<link rel="stylesheet" href="style.css">
+   		<title>page exo 1</title>
+		
+        </head>
+ 	<body>
+		<h1>Binvenue sur mon site</h1>
+		<p>vous y trouverez&nbsp;:</p>
+		<ul>	
+    			<li>un lien vers google.fr</li> 
+    			<li>un lien pour telecharger notepad++</li>
+   			<li>une image clicable pour aller sur le site de meteo france</li>
+		</ul>
+		<p>Bon surf !</p>
+		<hr/>
+		<p>Aller sur google.fr <a href="https://www.google.fr/" target="_blank" >ici</a></p>
+		<p>Telecharger <a href="https://notepad.fr.uptodown.com/windows" target="_blank" >NotePad++</a> un bon editeur de page html</p>
+		
+		<p>Pour acceder au site de meteo fr cliquer sur l image</p>
+		<p><a href="http://www.meteofrance.com/accueil" target="_blank" ><img src="meteo.png" alt="Photo meteo france" title="cliquez dessus pour acceder a meteo fr"  /></a></p>		
+		
+  	</body>	
+</html>
+
+
+<!-- valide w3c --> 
+
