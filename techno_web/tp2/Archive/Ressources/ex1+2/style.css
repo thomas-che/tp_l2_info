@@ -1,0 +1,34 @@
+body {
+	width:100%;
+	height:100%;
+	padding: 0px;
+	margin: 0px;
+
+	background: #F1F4F9;
+}
+
+header {
+	width:100%;
+	height:100%;
+	height: 12%;
+	width: 100%;
+	background: #09C
+}
+
+h5 {
+	color: #ACC0D7;
+	font-size :15px;
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+strong {
+	color: #414A51;
+	font-size :15px;
+}
+
+div.logo {
+	margin-left: 8%;
+	
+
+}

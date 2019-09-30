@@ -3,11 +3,92 @@
  		<head>
    			 <meta charset="utf-8">
    			 <link rel="stylesheet" href="style.css">
-   			 <title>page vide</title>
-        </head>
+   			 <title>formulaire</title>
+       	</head>
  	    <body>
 			
-			
-			
+ 	    	<form method="post" action="traitement.php"> 
+ 	    	<fieldset>
+					<legend>Deja menbre</legend>
+	    		<p>
+	    			<label for="login">Loging :</label>
+	    			<input type="text" name="login" id="from_loging"  placeholder="saisir votre login" required/>
+	    		</p>
+	    		<p>
+	    			<label for="mot_de_passe">Mot de passe :</label>
+	    			<input type="text" name="mot_de_passe" id="from_mot_de_passe"  placeholder="saisir votre login" required/>
+	    		</p>
+	    	</fieldset>
+
+ 	    	</form>
+
+			<form method="post" action="traitement.php">
+				<fieldset>
+					<legend>Nouveau menbre</legend>
+	    		<p>
+	    			<label for="Prenom">Prenom :</label>
+	    			<input type="text" name="prenom" id="from_prenom"  placeholder="prenom" required/>
+	    		</p>
+
+
+	    		<!-- balise valide w3c : meme chaien de caractere pour for et id-->
+	    		<p>
+	    			<label for="nom">Nom :</label>
+	    			<input type="text" name="nom" id="nom"  placeholder="nom famille" required />
+	    		</p>
+
+
+	    		<p>
+	    			<label for="sexe"></label>
+	    			Masculin :<input type="radio" name="sexe" checked value="masculin" />
+	    			Feminin : <input type="radio" name="sexe" value="feminin" />
+	    		</p>
+
+	    		<P>
+	    			Code postal
+	    			<select name="code_postal">
+	    				<option value="45100" selected >41500</option>
+	    				<option value="45000"  >41000</option>
+	    			</select>
+	    		</P>
+
+
+	    		<!-- ne fonctione pas -->
+	    		<p>
+	    			<label for="profesion">profesion</label>
+	    			<input list="profesion" type="text" name="profesion" id="profesion"  placeholder="votre job" />
+	    			<datalist id="profesion"  >
+	    				<option value="cadre">
+	    				<option value="manuel">
+	    				<option value="sans_job">
+	    				<option value="retraite">
+	    				<option value="etudiant">
+	    			</datalist>
+	    		</p>
+
+	    		<P>
+	    			Comment connu ?
+	    			<select name="comment_connu">
+	    				<option value="net" selected >Par le net</option>
+	    				<option value="ami"  >Par un ami</option>
+	    			</select>
+	    		</P>
+
+	    		<p>
+	    			<label for="info_complementaire">Info complementaire</label>
+	    			<textarea name="" id="from_info_complementaire" rows="2" col="50" > </textarea>
+	    		</p>
+
+	    		</fieldset>
+
+	    		<p>
+	    			<input type="submit" name="submit" value="envoyer" />
+	    			<input type="submit" name="test" value="tester" formaction="test.html" formtarget="_blank" formmethod="get" />
+	    			<input type="reset" name="effacer" value="effacer" />
+	    		</p>
+
+
+	    		
+	    	</form>	
   	    </body>	
 </html>
