@@ -19,6 +19,13 @@ public class Client {
         this.nom = nom;
     }
 
+    public Client(int idClient, String nom, String prenom, String societe, boolean actif) {
+        this (int idClient, String nom);
+        this.prenom = prenom;
+        this.societe = societe;
+    }
+
+
     public Client () {
 
     }

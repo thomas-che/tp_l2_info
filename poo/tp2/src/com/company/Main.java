@@ -6,7 +6,7 @@ public class Main {
 
         //Client c= new Client( );
         //System.out.println("id clien: "+c.idClient +"\t nom: "+c.nom );
-        Client c1 = new Client(1, "thomas", "che", "info");
+        Client c1 = new Client(1, "thomas", "che", "info",true);
         System.out.println("id clien: "+ c1.getIdClient() +"\t nom: "+ c1.getNom() );
 
 

@@ -2,7 +2,7 @@
 <html lang="fr">
  		<head>
    			 <meta charset="utf-8">
-   			 <link rel="stylesheet" href="style.css">
+   			 <!-- <link rel="stylesheet" href="style.css"> -->
    			 <title>formulaire</title>
        	</head>
  	    <body>
@@ -16,7 +16,7 @@
 	    		</p>
 	    		<p>
 	    			<label for="mot_de_passe">Mot de passe :</label>
-	    			<input type="text" name="mot_de_passe" id="from_mot_de_passe"  placeholder="saisir votre login" required/>
+	    			<input type="password" name="mot_de_passe" id="from_mot_de_passe"  placeholder="saisir votre login" required/>
 	    		</p>
 	    	</fieldset>
 
@@ -31,7 +31,7 @@
 	    		</p>
 
 
-	    		<!-- balise valide w3c : meme chaien de caractere pour for et id-->
+	    		<!-- balise valide w3c : meme chaine de caractere pour for et id-->
 	    		<p>
 	    			<label for="nom">Nom :</label>
 	    			<input type="text" name="nom" id="nom"  placeholder="nom famille" required />
@@ -44,19 +44,16 @@
 	    			Feminin : <input type="radio" name="sexe" value="feminin" />
 	    		</p>
 
-	    		<P>
+	    		
+	    		<p>
 	    			Code postal
-	    			<select name="code_postal">
-	    				<option value="45100" selected >41500</option>
-	    				<option value="45000"  >41000</option>
-	    			</select>
-	    		</P>
+	    			<input type="number" min="00000" max="99999" step="10" value="45000"/>
+	    		</p>
 
-
-	    		<!-- ne fonctione pas -->
+	    	
 	    		<p>
 	    			<label for="profesion">profesion</label>
-	    			<input list="profesion" type="text" name="profesion" id="profesion"  placeholder="votre job" />
+	    			<input list="profesion" />
 	    			<datalist id="profesion"  >
 	    				<option value="cadre">
 	    				<option value="manuel">
@@ -66,6 +63,7 @@
 	    			</datalist>
 	    		</p>
 
+	    	
 	    		<P>
 	    			Comment connu ?
 	    			<select name="comment_connu">
