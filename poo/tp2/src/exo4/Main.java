@@ -7,27 +7,29 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("saisie nb positif");
         int n;
-        int sum=0;
-        boolean reponse =false;
-        reponse=sc.hasNextInt();
-        while (n!=0) {
-            System.out.println("saisie nb positif");
-            n = sc.nextInt();
-            reponse=sc.hasNextInt();
-            if (reponse) {
-                if (n>0) {
-                    sum+=n;
+        int sum = 0;
+        boolean reponse = false;
+
+        do {
+
+            do {
+                System.out.println("saisie nb positif");
+                reponse = sc.hasNextInt();
+                n = sc.nextInt();
+                if (reponse != true || 0 < n) { // erire negation corecteemnt
+                    System.out.println("erreur de saisie, veuillez recomencer");
                 }
 
-            }
-            else {
-                System.out.println("mauvaise saisi");
-            }
-        }
-        System.out.printf("sum= "+sum);
+            } while (reponse);
+                sum += n;
 
+
+        } while (n != 0);
+            System.out.println("ok on continue");
+
+        System.out.println("fin");
 
     }
 }
+
