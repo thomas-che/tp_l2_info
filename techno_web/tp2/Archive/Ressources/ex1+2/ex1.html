@@ -7,42 +7,169 @@
     </head>
     
 	<body>
-		<header>
-			
+		
+			<header>
+				
 
-			<div class="logo">
-				<img src="logo.bmp" title="logo" alt="image du logo" />
-			</div>	
+				<div class="logo">
+					<img src="logo.bmp" title="logo" alt="image du logo" />
+				</div>	
 
-			<nav>
-				<ul>
-					<li>catalogue des produits</li>
-					<li>promotions du moment</li>
-					<li>service après vente</li>
-					<li>contact</li>
-				</ul>			
-			</nav>
-
-
-			<div class="icone">
-
-				<img src="img.bmp" alt="photo pr resaux sosiaux" usemap="#resaux">
-					<map>
-						<area shape="rect" coords="0,0,247,58" href="http://www.google.com">
-						<area shape="rect" coords="247,0,494,58" href="http://www.google.com">
-						<area shape="rect" coords="494,0,741,58" href="http://www.google.com">
-						<area shape="rect" coords="741,0,988,58" href="http://www.google.com">
-						<area shape="rect" coords="988,0,1235,58" href="http://www.google.com">
-					</map>
-
-			</div>
+				<nav>
+					<ul>
+						<li><a href="#catalogue">catalogue des produits</a></li>
+						<li><a href="#promo">promotions du moment</a></li>
+						<li><a href="#service">service après vente</a></li>
+						<li><a href="#contact">contact</a></li>
+					</ul>			
+				</nav>
 
 
+				<div class="icone">
+
+					<img src="img.bmp" alt="photo pr resaux sosiaux" usemap="#resaux">
+						<map>
+							<area shape="rect" coords="0,0,247,58" href="http://www.google.com">
+							<area shape="rect" coords="247,0,494,58" href="http://www.google.com">
+							<area shape="rect" coords="494,0,741,58" href="http://www.google.com">
+							<area shape="rect" coords="741,0,988,58" href="http://www.google.com">
+							<area shape="rect" coords="988,0,1235,58" href="http://www.google.com">
+						</map>
+
+				</div>
+			</header>
 
 
+			<section>
+				<aside>
+					<article class="bulle">
+						<h5>Promotion Apple !</h5>
+						<div class="image">
+							<img src="mac.jpg">
+						</div>
+						<p> 
+							<strong>Apple MacBook Pro 13,3'' LED 500 Go 4 Go RAM Intel Core i5 bicœur à 2,5 GHz SuperDrive MD101. A partir de 1000 Euros. 
+							</strong>
+						</p>
+					</article>
 
+					<article class="bulle">
+						<h5>Arrivage disques durs</h5>
+						<div class="image">
+							<img src="dd.jpg">
+						</div>
+						<p> 
+							<strong>Arrivage de plusieurs 2To Western Digital, Lacie, Maxtor. Garantie 2 ans et éxtensible à 5 ans. 149,90 Euros. 
+							</strong>
+						</p>
+					</article>
 
-		</header>
+					<article class="bulle">
+						<h5>Destockage clé usb</h5>
+						<div class="image">
+							<img src="cleusb.jpg">
+						</div>
+						<p> 
+							<strong>Promotion du moment : une clé USB offerte pour tout achat supérieur à 100 Euros. Saisir le code PXSDEZSC. 
+							</strong>
+						</p>
+					</article>
+
+					<article class="bulle">
+						<h5>-30% sur les cartes SD</h5>
+						<div class="image">
+							<img src="sd.jpg">
+						</div>
+						<p> 
+							<strong>Toutes nos cartes SD et micro SD sont affichées à -30%. Plusieurs granques marques disponibles : Kingstom, sanDisk, Samsung. 
+							</strong>
+						</p>
+					</article>
+
+				</aside>
+			</section>
+
+			<section>
+				<div class="centrale">
+					<form method="post" action="traitement.php"> 
+	 	    			<fieldset>
+							<legend>Informations Personnelles</legend>
+		    					<p>
+		    						<label for="prenom">Prenom :</label>
+		    						<input type="text" name="prenom" id="prenom"  placeholder="ex: Michel" required/>
+		    					</p>
+		    					<p>
+		    						<label for="nom">Nom :</label>
+		    						<input type="text" name="nom" id="nom"  placeholder="ex: DUPONT" required/>
+		    					</p>
+		    					<p>
+					    			<label for="sexe">Sexe :</label>
+					    			Masculin<input type="radio" name="sexe" id="sexe" checked value="masculin" />
+					    			Feminin<input type="radio" name="sexe" id="sexe" value="feminin" />
+					    		</p>
+					    		<p>
+					    			<label for="dateNaissance">Date de naissance</label>
+					    			<input type="Date" name="dateNaissance" id="dateNaissance" required/>
+
+					    		</p>
+					    		<p>
+					    			<label for="adresse">Adresse :</label>
+		    						<input type="text" name="adresse" id="adresse"  placeholder="ex: 3 grande rue" required/>
+					    		</p>
+					    		<p>
+					    			<label for="codePostal">Code postal :</label>
+		    						<input type="number" min="00000" max="99999" step="100" value="45000" name="codePostal" id="codePostal" />
+					    		</p>
+					    		<p>
+					    			<label for="ville">Ville :</label>
+		    						<input type="text" name="ville" id="ville"  placeholder="ex: Orleans" required/>
+					    		</p>
+					    		<p>
+					    			<label for="pays">Pays :</label>
+		    						<input type="text" name="pays" id="pays"  placeholder="ex: France" required/>
+					    		</p>
+		    			</fieldset>
+
+						<fieldset>
+							<legend>Compte</legend>
+								<p>
+		    						<label for="identifiant">Identifiant :</label>
+		    						<input type="text" name="identifiant" id="identifiant"  placeholder="ex: Micheldu56" required/>
+		    					</p>
+		    					<p>
+		    						<label for="motDePasse">Mot de passe :</label>
+		    						<input type="password" name="motDePasse" id="motDePasse"  placeholder="ex: pdw12345 ;)" required/>
+		    					</p>
+		    					<p>
+		    						<label for="adresseEmail">Adresse email :</label>
+		    						<input type="email" name="adresseEmail" id="adresseEmail" placeholder="ex: michemichedu56@gmail.com" required/>
+		    					</p>
+		    					<p>
+								    <label for="questionSecrete1">Question secrete :</label>
+								    <select name="questionSecrete" id="questionSecrete">
+								    	<option value="selectionQuestion" selected > ?-- selectioner question --? </option>
+								        <option value="prenomPere" >prenom du votre pere</option>
+								        <option value="nomJeuneFille">nom de jeune fille</option>
+								        <option value="prenomChien">prenom de votre premier chien</option>
+								    </select>
+		    					</p>
+		    					<p>
+		    						<label for="reponse">Réponse :</label>
+		    						<input type="text" name="reponse" id="reponse" placeholder="ex: Jean" required/>
+		    					</p>
+		    			</fieldset>
+
+			    		<p>
+			    			<label for="pas_de_style">&nbsp</label>
+			    			<input type="submit" name="submit" id="submit" value="Envoyer" />
+			    			<input type="reset" name="effacer" id="effacer" value="Effacer" />
+			    		</p>
+	    			</form>	
+	    		</div>
+			</section>
+
+			<footer>
+				<p>copyright : @thomas</p>
+			</footer>
     </body>
-
 </html>
