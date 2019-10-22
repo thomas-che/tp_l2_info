@@ -1,5 +1,6 @@
 body {
 	background: url("img.jpg") no-repeat fixed;
+	background-size: cover;
 }
 .menu{
 	padding: 50px 0px;
