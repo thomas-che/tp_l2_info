@@ -1,3 +1,13 @@
+DROP TABLE TirageImages;
+DROP TABLE Tirage;
+DROP TABLE TypePapier;
+DROP TABLE FormatPapier;
+DROP TABLE TarifFormat;
+DROP TABLE Commande;
+DROP TABLE TarifDegressif;
+DROP TABLE Laboratoire;
+DROP TABLE Notation;
+DROP TABLE Image;
 DROP TABLE Album;
 DROP TABLE CarteBancaire;
 DROP TABLE Client;
@@ -22,7 +32,7 @@ CREATE TABLE Client
 
 CREATE TABLE CarteBancaire
 ( numCarteBancaire VARCHAR2(16)
-, dateLimiteValidite DATE(8)
+, dateLimiteValidite DATE --d(8)
 , codeControle NUMBER(3)
 , typeCarteBancaire VARCHAR2(32)
 , eMailClient VARCHAR2(64)
@@ -33,12 +43,113 @@ CREATE TABLE CarteBancaire
 CREATE TABLE Album
 ( idAlbum NUMBER(4)
 , titreAlbum VARCHAR2(16)
-, dateCreation   -- dh(12)
+, dateCreation DATE --dh(12)
 , dateCreationModification 
 , visibilite VARCHAR2(32)
 , eMailClient VARCHAR2(64)
 , CONSTRAINT PK_idAlbum PRIMARY KEY(idAlbum) 
-, CONSTRAINT FK_idAlbum_Client_eMailUtilisateur FOREIGN KEY (eMailClient) REFERENCES Client 
+, CONSTRAINT FK_Album_Client_eMailUtilisateur FOREIGN KEY (eMailClient) REFERENCES Client 
+);
+
+CREAT TABLE Image
+( idAlbum NUMBER(4)
+, numImage NUMBER(4)
+, titreImage VARCHAR2(32)
+, taille NUMBER(4)
+, annotation VARCHAR2(64)
+, dateTelechargement DATE --d(8)
+, CONSTRAINT PK_idAlbum PRIMARY KEY(idAlbum)
+, CONSTRAINT PK_numImage PRIMARY KEY(numImage)
+);
+
+CREAT TABLE Notation
+( eMailUtilisateur VARCHAR2(64)
+, idAlbum NUMBER(4)
+, numImage NUMBER(4)
+, note NUMBER(2)
+, commentaire VARCHAR2(64)
+, dateNotation DATE --d(8)
+, CONSTRAINT PK_eMailUtilisateur PRIMARY KEY(eMailUtilisateur) 
+, CONSTRAINT PK_idAlbum PRIMARY KEY(idAlbum)
+, CONSTRAINT PK_numImage PRIMARY KEY(numImage)
+);
+
+CREAT TABLE Laboratoire
+( idLaboratoire VARCHAR2(8)
+, raisonSociale VARCHAR2(32)
+, adressePostalLabo VARCHAR2(128)
+, eMailLabo VARCHAR2(64)
+, telLabo VARCHAR2(10)
+, CONSTRAINT PK_idLaboratoire PRIMARY KEY(idLaboratoire)
+);
+
+CREAT TABLE TarifDegressif
+( idLaboratoire VARCHAR2(8)
+, quantiteMini NUMBER(4)
+, quantiteMaxi NUMBER(4)
+, reduction  NUMBER(4,2) -- DEC(4,2)  
+, CONSTRAINT PK_idLaboratoire PRIMARY KEY(idLaboratoire)
+, CONSTRAINT PK_quantiteMini PRIMARY KEY(quantiteMini)
+, CONSTRAINT PK_quantiteMaxi PRIMARY KEY(quantiteMaxi)
+);
+
+CREAT TABLE Commande
+( numCommande VARCHAR2(8)
+, dateCommande DATE --d(8)
+, adresseLivraison VARCHAR2(128)
+, etatCommande VARCHAR2(32)
+, eMailClient VARCHAR2(64)
+, idLaboratoire VARCHAR2(8)
+, CONSTRAINT PK_numCommande PRIMARY KEY(numCommande) 
+, CONSTRAINT FK_Commande_Client_eMailUtilisateur FOREIGN KEY (eMailClient) REFERENCES Client 
+, CONSTRAINT FK_Commande_Laboratoire_idLaboratoire FOREIGN KEY (idLaboratoire) REFERENCES Laboratoire 
+);
+
+CREAT TABLE TarifFormat
+( idLaboratoire VARCHAR2(8)
+, idFormat VARCHAR2(8)
+, idTypePapier VARCHAR2(8)
+, prixUnitaire  NUMBER(4,2) -- DEC(4,2) 
+, CONSTRAINT PK_idLaboratoire PRIMARY KEY(idLaboratoire)
+, CONSTRAINT PK_idFormat PRIMARY KEY(idFormat)
+, CONSTRAINT PK_idTypePapier PRIMARY KEY(idTypePapier)
+);
+
+CREAT TABLE FormatPapier
+( idFormat VARCHAR2(8)
+, libelleFormat VARCHAR2(32)
+, largeur NUMBER(6,2) -- DEC(6,2) 
+, hauteur NUMBER(6,2) -- DEC(6,2) 
+, CONSTRAINT PK_idFormat PRIMARY KEY(idFormat)
+);
+
+CREAT TABLE TypePapier
+( idTypePapier VARCHAR2(8)
+, libelleTypePapier VARCHAR2(32)
+, CONSTRAINT PK_idTypePapier PRIMARY KEY(idTypePapier)
+);
+
+CREAT TABLE Tirage
+( numCommande VARCHAR2(8)
+, numTirage NUMBER(4)
+, idFormat VARCHAR2(8)
+, idTypePapier VARCHAR2(8)
+, CONSTRAINT PK_numCommande PRIMARY KEY(numCommande) 
+, CONSTRAINT PK_numTirage PRIMARY KEY(numTirage)
+, CONSTRAINT FK_Tirage_FormatPapier_idFormat FOREIGN KEY (idFormat) REFERENCES FormatPapier
+, CONSTRAINT FK_Tirage_TypePapier_idTypePapier FOREIGN KEY (idTypePapier) REFERENCES TypePapier 
+);
+
+CREAT TABLE TirageImages
+( numCommande VARCHAR2(8)
+, numTirage NUMBER(4)
+, idAlbum NUMBER(4)
+, numImage NUMBER(4)
+, quantite NUMBER(4)
+, CONSTRAINT PK_numCommande PRIMARY KEY(numCommande) 
+, CONSTRAINT PK_numTirage PRIMARY KEY(numTirage
+, CONSTRAINT PK_idAlbum PRIMARY KEY(idAlbum)
+, CONSTRAINT PK_numImage PRIMARY KEY(numImage)
 );
 
 
@@ -49,10 +160,4 @@ CREATE TABLE Album
 
 
 
-
-
-
-
-
-
-select *from Client ;
+select * from Client ;
