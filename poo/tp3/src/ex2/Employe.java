@@ -22,6 +22,7 @@ public class Employe {
         return compteur;
     }
 
+    public int getMatricule1 () {return matricule;}
 
     @Override
     public String toString() {
