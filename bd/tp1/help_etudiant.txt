@@ -1,0 +1,28 @@
+AlbumsClient(emailClient,nbAlbum) pour chaque client qui figure dans la table album il compte combien il a d'album.
+
+AlbumToutClient(emailClient,nbAlbum) utilise la vue précédente pour avoir pour chaque client de la table client (et non pas que Album) le nombre d'album (donc mettre 0 pour les clients qui n'ont pas d'album).
+
+ImagesClient(emailClient,nbImage) pour chaque client dans Album compter le nombre total de ses images.
+
+ImagesTousClient(emailClient,nbImage) utilise la vue précédente pour calculer pour chaque client dans Client (et non pas que Album) le nombre total d'images qu'il a dans tous ses albums (donc mettre 0 pour les clients qui n'ont pas d'images).
+
+Commande2015NL(emailClient,nbCom) compte le nombre de commande 2015 non livrées pour chaque client qui figure dans la table commande
+
+Commande2015NLTC(emailClient,nbCom) utilise la vue précédente pour compter le nombre de commande 2015 non livrées pour chaque client qui figure dans la table client (et non pas que Commande, donc mettre 0 pour les clients qui n'ont pas de commande de ce type).
+
+Il manque une dernière étape pour répondre à la question. 
+
+=========================================================
+commande2015 : toute la table commande dans laquelle on a gardé que les lignes avec des commandes en 2015 et un état non livré. 
+
+nbTirageCommande(numCommande,idLaboratoire,nbTirage) affiche pour chaque numCommande, l'idLaboratoire ainsi que le nombre total de tirage
+
+ristourneCommande(numCoomande,reduction) affiche pour toutes les commandes de la table commande la réduction. Attention à mettre 0 pour les commandes qui n'ont pas de réduction. 
+
+tarifCommande(numCommande,montant) calcul le montant à payer pour chaque commande. Lisez bien votre MLDR pour trouver comment calculer ce montant (regardez bien les attributs prixUnitaire et quantite)
+
+Il manque une dernière étape pour répondre à la question. 
+
+
+
+

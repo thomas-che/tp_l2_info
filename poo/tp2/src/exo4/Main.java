@@ -8,7 +8,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("saisie nb positif");
-        int n;
+        int n=0;
         int sum=0;
         boolean reponse =false;
         reponse=sc.hasNextInt();
