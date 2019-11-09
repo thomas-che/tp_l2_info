@@ -1,0 +1,80 @@
+  514  cat etc.ls-l | tr -s ' ' | cut -f1,5,9 -d' ' > Etc.ls-l ; cat Etc.ls-l
+
+  530  cat cyrano.txt | head  -n 1577 | tail -n 55  > nez.txt ; cat nez.txt
+
+cat villes.csv 
+  616  ls -g villes.csv 
+  617  cat villes.csv | cut -f3,5 -d',' 
+  618  touch villeTri.txt
+  619  ll
+  620  cat villeTri.txt 
+  621  sort villeTri.txt 
+  622  sort -i villeTri.txt 
+  623  sort -n villeTri.txt 
+  624  cat villes.csv | cut -f5,3 -d',' > villeTri.txt 
+  625  cat villeTri.txt 
+  626  sort -n villeTri.txt 
+  627  cat villes.csv | cut -f5 -d',' > villeTri.txt 
+  628  sort -n villeTri.txt 
+  629  sort  villeTri.txt 
+  630  sort -i  villeTri.txt 
+  631  cat villes.csv | cut -f3,5 -d',' > villeTri.txt 
+  632  cat villesTri.txt | cut -f2 -d',' | sort -n  
+  633  cat villes.csv | cut -f3,5 -d',' > villeTri.txt 
+  634  sort -k2 -n villeTri.txt 
+  635  sort -k2 -i villeTri.txt 
+  636  sort -n -k2  villeTri.txt 
+  637  sort -n -k1  villeTri.txt 
+  638  sort -n -k2  villeTri.txt 
+  639  sort -nk2  villeTri.txt 
+  640  sort -k2 -t','  villeTri.txt 
+  641  sort -k2 -t',' -n  villeTri.txt 
+  642  sort -k2 -t',' -n  villeTri.txt | tail -n 4 
+  643  sort -k2 -t',' -n  villeTri.txt | tail -n 3 
+  644  sort -k2 -t',' -n -r villeTri.txt 
+  645  cat villes.csv  
+  646  cat villes.csv | cut -f1 -d',' > villeTri.txt 
+  647  cat villeTri.txt 
+  648  sort -n -uniq -c  villeTri.txt   
+  649  sort -n villeTri.txt | uniq -c   
+  650  sort -n villeTri.txt | uniq -c | sort -n | head -n8
+  651  sort -n villeTri.txt | uniq -c >villeTri.txt 
+  652  sort -n villeTri.txt | head -n8
+  653  cat villeTri.txt 
+  654  cat villes.csv | cut -f1 -d',' > villeTri.txt 
+  655  sort -n (sort -n villeTri.txt | uniq -c) |head -n8  
+  656  sort -n sort -n villeTri.txt | uniq -c |head -n8  
+  657  cat villes.csv | cut -f1 -d',' > villeTri.txt 
+  658  uniq -c | sort -k1 t' ' -n
+  659  uniq -c | sort -k1 -t' ' -n
+  660  uniq -c | sort -k1 -t' ' -n villeTri.txt 
+  661  uniq -c villeTri.txt 
+  662  sort -n uniq -c villeTri.txt 
+  663  uniq -c | sort -n  villeTri.txt 
+  664  uniq -c villeTri.txt 
+  665  uniq -c villeTri.txt | sort -n
+  666  uniq -c villeTri.txt | sort -n |tail -n8
+  667  uniq -c villeTri.txt | sort -n |tail -n1 | cut -f2 -d' '
+  668  uniq -c villeTri.txt | sort -n |tail -n1 |tr -s ' '| cut -f2 -d' '
+
+
+  668  uniq -c villeTri.txt | sort -n |tail -n1 |tr -s ' '| cut -f2 -d' '
+
+  676  uniq -c | find -type d |count
+
+  find /home/thomas/Documents/tp_l2_info/outil_dev/atelier/ -type d | cut -f8- -d'/' | xargs mkdir
+
+tail -n+3 recette >rp
+  730  tail -n+3 prix >pp
+  731  cat rp
+  732  tail -n+3 prix | sort >pp
+  733  tail -n+3 recette | sort >rp
+  734  cat rp
+  735  cat pp
+  736  tail -n+3 recette | sort | tr -s ' ' >rp
+  737  cat rp
+  738  tail -n+3 prix | sort | tr -s ' ' >pp
+  739  join rp pp
+  740  join rp pp | cut -d' ' -f2,4 | tr ' ' '*'
+  741  join rp pp | cut -d' ' -f2,4 | tr ' ' '*' | bc
+
