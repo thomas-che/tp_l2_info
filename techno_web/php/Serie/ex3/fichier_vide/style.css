@@ -1,0 +1,126 @@
+body {
+	width:100%;
+	height:100%;
+	padding: 0px;
+	margin: 0px;
+
+	background: #F1F4F9;
+}
+
+p {
+	text-align: justify;
+}
+
+.centrale {
+	background-color: #FFF;
+	margin-left: 4%;
+	margin-right: 4%;
+	padding-top: 3%;
+	width: 90%;
+}
+
+.centrale form {
+	margin:auto;
+	width: 75%;
+}
+
+fieldset{
+	background-color: rgb(247,247,247);
+	border-radius: 5px;
+	margin-bottom: 10px;
+	border: 1px #CCC solid;
+
+}
+
+fieldset:hover {
+	box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7) , 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+}
+
+fieldset legend {
+	padding: 0 10px;
+	color: #237DAC;
+	border-right: #CCC 1px solid;
+	border-left: #CCC 1px solid;
+}
+
+label {
+	background-color: #09C;
+	color: #FFF;
+	display: block;
+	width: 20%;
+	float: left;
+	padding: 1% 1% 1% 0;
+	margin-left: 4%;
+	text-align: right;
+}
+
+label:hover {
+	font-weight: bold;
+}
+
+input {
+	color: #414A51;
+	padding: 1% 0 1% 1%;
+	font-size: 14px;
+	margin-left: 1%;
+	width: 68%;
+	border: #CCC 1px solid;
+	transition: all 0.25s linear;
+}
+
+.erreur{
+	color: red;
+	font-size: 110%;
+	font-weight: bold;
+	margin:auto;
+	width: 75%;
+}
+
+
+.msg {
+	/*pb avec le sexe*/
+	color: #414A51;
+	padding: 1% 0 1% 1%;
+	font-size: 14px;
+	margin-left: 26%;
+	width: 68%;
+	border: #CCC 1px solid;
+	transition: all 0.25s linear;
+}
+
+
+input:focus {
+	width :39%;
+	box-shadow: 0 0 5px #6495ED ;  
+}
+
+input[type="submit"] {
+	width : 20%;
+	background-color: #09C;
+	color: black;
+	border-radius: 1px;
+	transition: all 0.2s linear;
+	margin-bottom: 20px;
+	margin-left: 36px; 
+	padding-left: 0px;
+	border: #DDEEFF 1px solid;
+}
+
+input[type="submit"]:hover {
+	background-color: #87CEFA;
+	color : #414A51;
+	box-shadow: 0 0 5px #6495ED;
+}
+
+
+/*pb avec les boutons*/
+input:invalid{
+	box-shadow: 0 0 5px #6495ED;
+	background: url("rouge3.png") no-repeat right ;
+}
+
+input:valid{
+	box-shadow: 0 0 5px #6495ED;
+	background: url("vert3.png") no-repeat right ;
+}
+
