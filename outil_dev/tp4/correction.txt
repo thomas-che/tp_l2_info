@@ -1,0 +1,7 @@
+
+exo1:
+
+PS1="[\d]\u:\w$"
+
+
+les scipt son corriger

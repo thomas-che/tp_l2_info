@@ -28,6 +28,15 @@ public class Main {
             }
         }
 
+        // correction avec le predicate
+        for ( int i : tab) {
+            if (PlusPetitQue20.and(PlusGrandQue10).test(i)) {
+                System.out.println("avec predicate : " + i);
+            }
+        }
+
+
+
         // ou plus simple lamda expresion
         Predicate<Integer> PlusPetitQue20_V2 = integer -> integer<=20;
 

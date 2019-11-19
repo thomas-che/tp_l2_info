@@ -1,0 +1,24 @@
+Exemple de fichier conteneur
+A. Nonymous
+5 nov 2011
+
+
+Ci-dessous le fichier lapin.txt (entre BEGIN et END)
+
+### BEGIN lapin.txt
+# Bonjour
+# Je suis le fichier lapin.txt long de 3 lignes
+# Sans espace au début des lignes.
+### END lapin.txt
+
+Et ci-dessous un exemple de script shell :
+
+### BEGIN hello
+# #!/bin/bash
+# echo Bonjour le monde
+### END hello
+
+Bien entendu, autour on peut écrire tout ce qu'on 
+veut. Y compris avec des ### BEGIN au mileu du texte
+si ça nous chante.
+

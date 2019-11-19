@@ -1,0 +1,10 @@
+#!/bin/bash
+for b in 0 1; do 
+  for i in 30 31 32 33 34 35 36 37; do
+  echo -ne '\033[0m['$b';'$i'm\033['$b';'$i'm hello '
+  for j in 40 41 42 43 44 45 46 47; do 
+    echo -ne '\033['$j'm hello '
+  done
+  echo -e '\033[0m'
+  done
+done

@@ -1,0 +1,14 @@
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:lapin
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+man:x:12:
+cdrom:x:24:lapin,poule
+staff:x:50:lapin
+lapin:x:54:
+poule:x:110:

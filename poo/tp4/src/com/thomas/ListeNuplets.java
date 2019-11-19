@@ -52,15 +52,19 @@ public class ListeNuplets {
             }
         }
 
-        //a redefinir
+        //ne fonctionne pas
         @Override
         public int compareTo(Nuplet nuplet) {
             int i=0;
-            //while  (i<this.length || i< nuplet.length ){
-
-            //}
-
-
+            /*while  (i<this.content.length || i< nuplet.length ){
+                if ( this.content[i] < nuplet[i] ) {
+                    return 1;
+                }
+                else if ( nuplet[i] < this.content[i] ) {
+                    return -1;
+                }
+                i++;
+            }*/
             return 0;
         }
     }
