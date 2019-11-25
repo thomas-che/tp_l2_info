@@ -1,0 +1,86 @@
+/*
+* Article.java
+*
+* Created on 27 novembre 2006, 22:12
+*/
+
+package tp7.exo3;
+
+/**
+* 
+* @author lkahlem
+*/
+public class Article implements Comparable<Article> {
+
+private int numero;
+private String descriptif;
+
+/** Creates a new instance of Article */
+public Article(int numero, String descriptif) {
+this.numero = numero;
+this.descriptif = descriptif;
+}
+
+public String getDescriptif() {// utilis�e dans la classe ArticleComparateur
+return descriptif;
+}
+
+public int compareTo(Article o) {
+
+return (this.numero - o.numero);
+
+}
+
+public String toString() {
+return "[ num�ro = " + numero + ", descriptif = " + descriptif + "]";
+}
+
+/*
+* (non-Javadoc)
+* 
+* @see java.lang.Object#hashCode()
+*/
+
+/* (non-Javadoc)
+* @see java.lang.Object#hashCode()
+*/
+@Override
+public int hashCode() {
+final int prime = 31;
+int result = 1;
+result = prime * result
++ ((descriptif == null) ? 0 : descriptif.hashCode());
+result = prime * result + numero;
+return result;
+}
+
+/*
+* (non-Javadoc)
+* 
+* @see java.lang.Object#equals(java.lang.Object)
+*/
+
+/* (non-Javadoc)
+* @see java.lang.Object#equals(java.lang.Object)
+*/
+@Override
+public boolean equals(Object obj) {
+if (this == obj)
+return true;
+if (obj == null)
+return false;
+if (getClass() != obj.getClass())
+return false;
+Article other = (Article) obj;
+if (descriptif == null) {
+if (other.descriptif != null)
+return false;
+} else if (!descriptif.equals(other.descriptif))
+return false;
+if (numero != other.numero)
+return false;
+return true;
+}
+
+}
+

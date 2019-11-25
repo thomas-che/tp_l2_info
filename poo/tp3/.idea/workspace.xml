@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd5ebd1c-bd15-47d2-a23b-ec6ebfab8ee7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../tp2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tp2/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tp2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tp2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tp2/out/production/tp2/exo4/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../tp2/out/production/tp2/exo4/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tp2/src/exo4/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tp2/src/exo4/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP5.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +27,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Téléchargements/POO/POOTP2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tp6" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -45,7 +41,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.MainBis">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ex2.Main" />
       <module name="tp3" />
@@ -69,12 +65,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainBis" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ex2.MainBis" />
+      <module name="tp3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ex2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (1)" />
+      <item itemvalue="Application.MainBis" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainBis" />
         <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
@@ -95,6 +106,7 @@
       <workItem from="1572469311327" duration="1502000" />
       <workItem from="1572711393768" duration="2048000" />
       <workItem from="1572883931510" duration="742000" />
+      <workItem from="1574415319176" duration="1652000" />
     </task>
     <servers />
   </component>
