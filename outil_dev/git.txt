@@ -1,0 +1,194 @@
+  377  cd Documents/
+  378  ll
+  379  ls -l
+  380  cd info_l2/
+  381  ls -l
+  382  cd outil_dev/
+  383  mkdir enerGit
+  384  ls -l
+  385  cd enerGit/
+  386  git init
+  387  ls -l
+  388  git stauts
+  389  git status
+  390  git add *
+  391  git cimmit -am"initilalisation du git"
+  392  git commit -am"initilalisation du git"
+  393  git config --global user.email "salle_info_es1@a.com"
+  394  git config --global user.name "Your Name"
+  395  git config --global user.name "thomas_es1"
+  396  git commit -am"initilalisation du git"
+  397  git log 
+  398  ls -l
+  399  cd atelier/
+  400  ls -l
+  401  nano mesvariabl
+  402  cd ..
+  403  git status
+  404  git commit -am"modif de mesvariable"
+  405  git add *
+  406  git commit -am"modif de mesvariable"
+  407  cd atelier/
+  408  ls -l
+  409  git rm mesvariabl
+  410  cd ..
+  411  git status
+  412  git commit -am"sup de mesvariabl"
+  413  git log
+  414  git checkout HEAD -- atelier/mesvariabl
+  415  cd atelier/
+  416  touch var.txt
+  417  nano var.txt 
+  418  cd ..
+  419  git status
+  420  git add *
+  421  git commit -am"ajout de var"
+  422  rm atelier/var.txt 
+  423  git status
+  424  git checkout -- atelier/var.txt
+  425  git status
+  426  git rm --cached atelier/var.txt 
+  427  git status
+  428  git add *
+  429  git staus
+  430  git status
+  431  git log
+  432  git diff <cad49a160cc42ba9cd6e2a154fadf2a4172c8ddc> <55e7763fa2fb5822c0a9479ba0f7a544a6327413>
+  433  git diff cad49a160cc42ba9cd6e2a154fadf2a4172c8ddc 55e7763fa2fb5822c0a9479ba0f7a544a6327413
+  434  nano atelier/var.txt 
+  435  git checkout atelier/var.txt 
+  436  car atelier/var.txt 
+  437  cat atelier/var.txt 
+  438  git checkout atelier/var.txt 
+  439  nano atelier/var.txt 
+  440  git reset atelier/var.txt 
+  441  cat atelier/var.txt 
+  442  cd ..
+  443  git clone --bare https://pdiost.univ-orleans.fr/git/scm/lod/source.git
+  444  cd enerGit/
+  445  git clone --bare https://pdiost.univ-orleans.fr/git/scm/lod/source.git
+  446  git clone https://pdiost.univ-orleans.fr/git/scm/lod/source.git
+  447  git clone https://pdicost.univ-orleans.fr/git/scm/lod/source.git
+  448  ls -l
+  449  cd source/
+  450  ls -l
+  451  cd ..
+  452  git clone https://pdicost.univ-orleans.fr/git/scm/lod/source.git depot-travail
+  453  git clone --bare https://pdicost.univ-orleans.fr/git/scm/lod/source.git depot-barre
+  454  ls -l 
+  455  cd depot-travail/
+  456  git remote -v
+  457  git remote add partage file://chemin/depot-bare
+  458  git remote -v
+  459  git remote show origin
+  460  git remote show partage
+  461  cd ..
+  462  git pull partage master
+  463  cd depot-travail/
+  464  git pull partage master
+  465  git remote rm partage
+  466  ls -l
+  467  git remote add partage file:///home/tpcost.loc/o2180812/Documents/info_l2/outil_dev/enerGit/depot-bare
+  468  git remote -v
+  469  ls -la
+  470  git pull partage master
+  471  git config branch.master.remote partage
+  472  git pull -v
+  473  git status
+  474  cd ..
+  475  git satuts
+  476  git status
+  477  git add *
+  478  git commit -am"commit..."
+  479  cd depot-travail/
+  480  git status
+  481  git branch partage
+  482  git status
+  483  git remote -v
+  484  git pul origin master
+  485  git pull origin master
+  486  git pull partage master
+  487  git remote -v
+  488  git remote show paratage
+  489  git remote show partage
+  490  cd ..
+  491  git status
+  492  cd depot-p
+  493  cd depot-barre/
+  494  ls -la
+  495  git stauts
+  496  git status
+  497  cd ..
+  498  cd depot-travail/
+  499  git status
+  500  git remote partage
+  501  git remote show partage
+  502  git remote show partage
+  503  git remote show origine
+  504  git remote show origin
+  505  git config branch.master.remote partage
+  506  git pull -v
+  507  history
+
+
+
+
+
+
+  503  cd enerGitV2/
+  504  ls -l
+  505  git config --global user.email "salle_info_es1@a.com"
+  506  git config --global user.name "thomas_es1"
+  507* git clone --bare https://pdicost.univ-orleans.fr/git/sce
+  508  ls -l
+  509  rm depot-barre/
+  510  rm -f depot-barre/
+  511  rm -rf depot-barre/
+  512  ls -l
+  513  git clone --bare https://pdicost.univ-orleans.fr/git/scm/lod/source.git depot-bare
+  514  git clone https://pdicost.univ-orleans.fr/git/scm/lod/source.git depot-travail
+  515  cd depot-travail/
+  516  git remote -v
+  517  pwd
+  518  git remote add partage file:///home/tpcost.loc/o2180812/Documents/info_l2/outil_dev/enerGitV2/depot-bare
+  519  git remote -v
+  520  git remote show origin
+  521  git remote show partage
+  522  git pull partage master
+  523  git config branch.master.remote partage
+  524  git remote show origin
+  525  d
+  526  git pull -v
+  527  git remote show origin
+  528  git push partage
+  529  git config --global push.default
+  530  git push partage
+  531  git config --global push.default matching
+  532  git push partage
+  533  ls -l
+  534  nano insere 
+  535  git status
+  536  git add *
+  537  git commit -am"modif insert"
+  538  git push origin master
+  539  git push partage master
+  540  cd ..
+  541  git clone depot-travail/ depot-travailbis
+  542  ls -l
+  543  cd depot-travailbis/
+  544  nano insere 
+  545  git add *
+  546  git commit -am"comit avec autre user"
+  547  git push partage master
+  548  git pull partage master
+  549  git remote show partage
+  550  git remote add partage file:///home/tpcost.loc/o2180812/Documents/info_l2/outil_dev/enerGit/depot-bare
+  551  git remote -v
+  552  git pull partage master
+  553  git pull -v
+  554  git pull partage master
+  555  git push partage
+  556  history
+
+
+
