@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd5ebd1c-bd15-47d2-a23b-ec6ebfab8ee7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../TP5.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ex2/MainBis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ex2/MainBis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ex2/employes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ex2/employes.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +28,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tp6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tp6_v2" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -41,7 +42,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainBis">
+  <component name="RunManager" selected="Application.MainBisCorrection">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ex2.Main" />
       <module name="tp3" />
@@ -78,13 +79,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainBisCorrection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ex2.MainBisCorrection" />
+      <module name="tp3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ex2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (1)" />
       <item itemvalue="Application.MainBis" />
+      <item itemvalue="Application.MainBisCorrection" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainBisCorrection" />
         <item itemvalue="Application.MainBis" />
         <item itemvalue="Application.Main (1)" />
       </list>
@@ -107,6 +123,7 @@
       <workItem from="1572711393768" duration="2048000" />
       <workItem from="1572883931510" duration="742000" />
       <workItem from="1574415319176" duration="1652000" />
+      <workItem from="1575019066948" duration="2396000" />
     </task>
     <servers />
   </component>

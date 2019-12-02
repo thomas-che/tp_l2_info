@@ -1,0 +1,7 @@
+#! /bin/bash
+
+fic=$1
+
+debut=$(grep "#\*\*\*
+START[.]*\*\*#" $fic | cut -d' ' -f 1)
+cat $debut
