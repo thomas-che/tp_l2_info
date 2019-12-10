@@ -1,5 +1,7 @@
 package annuaire;
 
+import java.util.Objects;
+
 public class Personne  {
 	// des cstes definissant les valeurs possible pour la civilité
 	public static final int INCONNU = 0;
@@ -66,5 +68,23 @@ public class Personne  {
 	private boolean civiliteCorrecte(int civilite) {
 		return INCONNU <= civilite && civilite <= MLLE;
 	}
-	
+
+
+	// redef equal et hash code
+
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Personne personne = (Personne) o;
+		return civilite_ == personne.civilite_ &&
+				Objects.equals(nom_, personne.nom_) &&
+				Objects.equals(prenom_, personne.prenom_);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nom_, prenom_, civilite_);
+	}
 }

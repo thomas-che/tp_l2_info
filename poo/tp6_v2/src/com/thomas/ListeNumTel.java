@@ -1,5 +1,7 @@
 package com.thomas;
 
+import annuaire.NumTel;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +18,9 @@ public class ListeNumTel {
     }
 
     public boolean ajouter(int index, annuaire.NumTel num){
+        if (index <0 || nbNumeros()<index ){
+            throw new IndexOutOfBoundsException("hors limites");
+        }
         if (!lesTels.contains(num)){
             lesTels.add(index , num);
             return true;
@@ -25,14 +30,19 @@ public class ListeNumTel {
 
     public boolean ajouterFin(annuaire.NumTel num) {
         if (!lesTels.contains(num)) {
-            lesTels.add(num);
-            return true;
+            return lesTels.add(num);
         }
         return false;
     }
 
+    public boolean ajouterDebut(annuaire.NumTel num) {
+        return ajouter(0,num);
+    }
+
+// on doit cree une varaiable numerorecherche pour qu il est le meme type que le numtel stoquer dans lestel
     public boolean contientNumero(int num){
-        return lesTels.contains(num);
+        annuaire.NumTel numerorecherche = new NumTel(num);
+        return lesTels.contains(numerorecherche);
     }
 
     public Iterator<annuaire.NumTel> iterator() {
@@ -51,12 +61,13 @@ public class ListeNumTel {
     }
 
     public annuaire.NumTel premierNumero() {
-        return lesTels.get(1);
+        return lesTels.get(0);
     }
 
     public boolean retirer(int num) {
         if (1<nbNumeros()){
-            lesTels.remove(num);
+            NumTel numAretirer=new NumTel(num);
+            lesTels.remove(numAretirer);
             return true;
         }
         return false;
@@ -64,8 +75,19 @@ public class ListeNumTel {
 
     @Override
     public String toString() {
-        return "ListeNumTel{" +
-                "lesTels=" + lesTels.toArray() +
-                '}';
+        // return "ListeNumTel{" +
+        //        "lesTels=" + lesTels.toArray() +
+        //        '}';
+
+        // ou
+        // return lesTels.toString();
+
+        // ou avec un iterator
+        String s="";
+        Iterator<NumTel> it = lesTels.iterator();
+        while (it.hasNext()){
+            s+=it.next()+" ";
+        }
+        return s;
     }
 }
