@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd5ebd1c-bd15-47d2-a23b-ec6ebfab8ee7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/poo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RessourcesProjetPOO/ProjetPOO/ProjetPOO.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RessourcesProjetPOO/RessourcesProjetPOO.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tp6_correction/.idea/tp6_correction.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ex2/MainBis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ex2/MainBis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ex2/employes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ex2/employes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tp4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tp6_v2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tp_1_corrige.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tp_5_JD.zip" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,23 +29,16 @@
   </component>
   <component name="ProjectId" id="1SMxrB8KhUicCUME1KL48PNEiAh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tp6_v2" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tp5_V2" />
   </component>
   <component name="RunManager" selected="Application.MainBisCorrection">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -106,6 +104,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -124,6 +134,7 @@
       <workItem from="1572883931510" duration="742000" />
       <workItem from="1574415319176" duration="1652000" />
       <workItem from="1575019066948" duration="2396000" />
+      <workItem from="1577722783061" duration="581000" />
     </task>
     <servers />
   </component>
@@ -142,5 +153,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1724" y="360" width="424" height="484" key="FileChooserDialogImpl" timestamp="1577723206844">
+      <screen x="1280" y="190" width="1280" height="800" />
+    </state>
+    <state x="1724" y="360" width="424" height="484" key="FileChooserDialogImpl/1280.190.1280.800/0.217.1280.807@1280.190.1280.800" timestamp="1577723206844" />
+    <state x="1527" y="301" width="839" height="602" key="NewModule_or_Project.wizard" timestamp="1577723224645">
+      <screen x="1280" y="190" width="1280" height="800" />
+    </state>
+    <state x="1527" y="301" width="839" height="602" key="NewModule_or_Project.wizard/1280.190.1280.800/0.217.1280.807@1280.190.1280.800" timestamp="1577723224645" />
   </component>
 </project>
