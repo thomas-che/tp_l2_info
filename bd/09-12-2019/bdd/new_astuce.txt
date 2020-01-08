@@ -1,0 +1,7 @@
+
+-- renome pernomcli en PRENOM
+SELECT prenomcli "PRENOM",nomcli "NOM" FROM client ORDER BY nomcli;
+
+
+-- ordone par nom puis prenom
+SELECT prenomcli "PRENOM",nomcli "NOM" FROM client ORDER BY nomcli,pernomcli;

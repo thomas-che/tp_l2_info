@@ -1,0 +1,58 @@
+2354:Rideau.
+4392:Rideau.
+6354:Rideau.
+8513:Rideau.
+9633:Rideau.
+108:Acte I.
+2358:Acte II.
+4397:Acte III.
+6359:Acte IV.
+8518:Acte V.
+144:Scène 1.I.
+367:Scène 1.II.
+790:Scène 1.III.
+1036:Scène 1.IV.
+1881:Scène 1.V.
+2107:Scène 1.VI.
+2172:Scène 1.VII.
+2401:Scène 2.I.
+2519:Scène 2.II.
+2575:Scène 2.III.
+2714:Scène 2.IV.
+2943:Scène 2.V.
+3006:Scène 2.VI.
+3318:Scène 2.VII.
+3732:Scène 2.VIII.
+3866:Scène 2.IX.
+4107:Scène 2.X.
+4351:Scène 2.XI.
+4424:Scène 3.I.
+4640:Scène 3.II.
+4878:Scène 3.III.
+4964:Scène 3.IV.
+5013:Scène 3.V.
+5138:Scène 3.VI.
+5224:Scène VII.
+5561:Scène 3.VIII.
+5596:Scène 3.IX.
+5621:Scène 3.X.
+5748:Scène 3.XI.
+5879:Scène XII.
+5903:Scène 3.XIII.
+6241:Scène 3.XIV.
+6380:Scène 4.I.
+6515:Scène 4.II.
+6609:Scène 4.III.
+6822:Scène 4.IV.
+7139:Scène 4.V.
+7363:Scène 4.VI.
+7600:Scène 4.VII.
+7840:Scène 4.VIII.
+8021:Scène 4.IX.
+8165:Scène 4.X.
+8556:Scène 5.I.
+8685:Scène 5.II.
+8890:Scène 5.III.
+8961:Scène 5.IV.
+9000:Scène 5.V.
+9388:Scène 5.VI.

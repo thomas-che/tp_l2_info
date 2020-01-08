@@ -1,0 +1,151 @@
+1)Select nomCli "Nom", prenomCli "Prénom" From Client Order By nomCli, prenomCli;
+
+2)Select codeAct "Code", nomAct "Nom", valeurCourante "Valeur courante" From Action;
+
+3)Select * From Action Where valeurcourante = (Select Max(valeurCourante) From Action) Or valeurcourante = (Select Min(valeurCourante) From Action);
+
+4)select codeact,nomact,valeurcourante,coderegion from (select numcli from client where nomcli=‘Leloup’ and prenomcli=‘Pierre’) natural join possedeaction natural join action 
+
+5) create or replace view gainactionpl(gaintotalaction) as
+   select sum(quantite*(valeurcourante-prixachat)) from action natural join possedeaction natural join (select numcli from client where prenomcli='Pierre' and nomcli='Leloup');
+   
+6) create or replace view gainrelatiffcp(codefcp,valeurRelative) as
+select codefcp,sum(quantite*(valeurcourante-prixachat)) from composede natural join action group by codefcp;   
+
+7) on re-utilise Q6 : 
+create or replace view gainfcp(codefcp,valeurRelative) as
+select codefcp,sum(quantite*(valeurcourante-prixachat)) from composede natural join action group by codefcp;
+
+on peut ensuite faire comme Q3 pour chercher le max et min ou comme ci-dessous
+Drop View   PerfFCP;
+Create View PerfFCP(gainMaxFCP, gainMinFCP) As
+  Select Max(valeurRelative), Min(valeurRelative)
+  From GainFCP;
+Select * From PerfFCP;
+Select codeFCP "FCP le plus performant", gain From GainFCP join PerfFCP
+on gain = gainMaxFCP;
+Select codeFCP "FCP le moins performant", gain From GainFCP join PerfFCP
+on gain = gainMinFCP;
+
+8)Select Round(Avg(valeurRelative),2) "Perf moyenne des FCP" From GainFCP;
+
+9)(Q9)
+-- on a besoin de Q5  gain action  leloup
+create or replace view gainactionpl(gaintotalaction) as
+select sum(quantite*(valeurcourante-prixachat)) from action natural join possedeaction natural join
+(select numcli from client where prenomcli='Pierre' and nomcli='Leloup');
+
+-- on a besoin de Q6 : gain de chaque fcp
+create or replace view gainrelatiffcp(codefcp,valeurRelative) as
+select codefcp,sum(quantite*(valeurcourante-prixachat)) from composede natural join action
+group by codefcp;
+
+-- on somme les gain des fcp de leloup
+create or replace view gainfcppl(gaintotalfcp) as
+select sum(quantitefcp*valeurrelative) from gainrelatiffcp natural join possedefcp natural join
+(select numcli from client where prenomcli='Pierre' and nomcli='Leloup');
+
+-- on somme les action de leloup plus les fcp de leloup via cross join
+select gaintotalfcp+gaintotalaction from gainactionpl cross join gainfcppl;
+
+10) Q10 c'est comme Q11 sauf qu’ici on prend pas en compte la valeur d’achat
+-- on a besoin de Q6 : gain de chaque fcp
+create or replace view gainrelatiffcp(codefcp,valeurRelative) as
+select codefcp,sum(quantite*valeurcourante) from composede natural join action
+group by codefcp;
+
+--pour chaque client on a son gain fcp
+create or replace view gainrelatiffcpclient(numcli,grfcpclient) as
+select numcli,sum(quantitefcp*valeurrelative) from gainrelatiffcp natural join possedefcp
+group by numcli;
+
+-- pour chaque client on a son gain action
+create or replace view gainrelatifactionclient(numcli,gractionclient) as
+select numcli,sum(quantite*valeurcourante) from action natural join possedeaction
+group by numcli;
+
+-- on somme le gain action avec le gain fcp dans une jointure EXTERNE !
+create or replace view gainrelatifclient (numcli,grclient) as
+select numcli,nvl(grfcpclient,0)+nvl(gractionclient,0)
+from gainrelatiffcpclient natural full outer join gainrelatifactionclient;
+
+-- on cherche le client qui a le max
+select * from client natural join
+ (select numcli from gainrelatifclient where grclient=(select max(grclient) from gainrelatifclient));
+ 
+11) 
+-- on a besoin de Q6 : gain de chaque fcp
+create or replace view gainrelatiffcp(codefcp,valeurRelative) as
+select codefcp,sum(quantite*(valeurcourante-prixachat)) from composede natural join action
+group by codefcp;
+
+--pour chaque client on a son gain fcp
+create or replace view gainrelatiffcpclient(numcli,grfcpclient) as
+select numcli,sum(quantitefcp*valeurrelative) from gainrelatiffcp natural join possedefcp
+group by numcli;
+
+-- pour chaque client on a son gain action
+create or replace view gainrelatifactionclient(numcli,gractionclient) as
+select numcli,sum(quantite*(valeurcourante-prixachat)) from action natural join possedeaction
+group by numcli;
+
+-- on somme le gain action avec le gain fcp dans une jointure EXTERNE !
+create or replace view gainrelatifclient (numcli,grclient) as
+select numcli,nvl(grfcpclient,0)+nvl(gractionclient,0)
+from gainrelatiffcpclient natural full outer join gainrelatifactionclient;
+
+-- on cherche le client qui a le max
+select * from client natural join
+ (select numcli from gainrelatifclient where grclient=(select max(grclient) from gainrelatifclient));
+ 
+12)on utilise la vue Q11
+pour chaque compte on calcul une vue qui fait : date_jour-date_ouverture
+
+-- on calcul les duree des comptes
+create or replace view dureecompte(numcli,duree) as
+select numcli,to_char(sysdate,'YYYY')-to_char(dateouverturecompte,'YYYY') from client;
+
+-- on utilise la vue gainrelatifclient de Q11 pour avoir les rendements
+create or replace view rendementannuel(numcli,rendement) as
+select numcli, grclient/duree from gainrelatifclient natural join dureecompte;
+
+-- on cherche le plus haut rendement
+select * from client natural join
+(select numcli from rendementannuel where rendement=(select max(rendement) from rendementannuel));
+
+13)Select *
+From FCP
+Where to_char(dateDebut,'YYYY')='2000';
+
+14)Select codeFCP, nomFCP
+From FCP
+Where dateFin <= All
+  (Select dateFin From FCP);
+  
+15)
+(select * from FCP)
+ minus
+(select codefcp,nomfcp,datedebut,datefin from fcp natural join composede
+  natural join action natural join (select * from region where nomregion<>'Europe'));
+  
+16)(Q16)
+-- vue des action mauvaise
+create or replace view actionMauv (codeact) as
+select codeact from action natural join (select coderegion from region where nomregion<>'Europe');
+
+-- vue des fcp mauvais
+create or replace view fcpMauv (codefcp) as
+select codefcp from composede natural join action natural join(select coderegion from region where nomregion<>'Europe');
+
+select numcli,nomcli,prenomcli from client natural join 
+(
+	(select numcli from possedeaction union select numcli from possedefcp)
+     
+	minus
+
+	(select numcli from possedefcp natural join fcpMauv union
+	 select numcli from possedeaction natural join actionMauv)
+)
+ ;
+
+ client ayant au moins une action ou une fcp minus client ayant au moins une mauvaise action ou mauvaise fcp 
