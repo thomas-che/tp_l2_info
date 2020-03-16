@@ -1,0 +1,39 @@
+UC : Création proposition vente
+
+niveau: but utilisateur 
+perimetre : Systeme gestion du garage
+acteur principal : vendeur 
+post-condition : proposition conforme a la demande du client
+
+Scenario nominal:
+
+1. Appel INCLUDE : rechercher client
+2. Vendeur chosit un modele de vehicule dans une liste proposé par systeme
+  3. Systeme demande si c'est un vehicule neuf ou d'occasion
+4.Vendeur précisera son choix
+  5. Systeme affiche resultats correspondants
+6. Vendeur sélectionne un vehicule
+  7. Systeme calcule prix et Syst affiche prop complete
+8. Vendeur choisit de faire une remise ou non
+  9. Prop enregistée par syst
+10. Vendeur imprime prop
+
+
+
+
+
+##################################################################
+
+UC : Recherche client
+
+niveau: sous-fonction
+perimetre : Systeme gestion du garage
+acteur principal : vendeur 
+post-condition : toutes les infos du client
+
+Scenario nominal:
+  1. Syst propose remplir un formulaire infos client
+2. Vendeur saisit infos client
+3. Syst affiche clients ayant ce nom 
+4. vendeur selectionne client
+  5. Syst affiche infos client 

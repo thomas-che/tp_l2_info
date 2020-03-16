@@ -1,0 +1,6 @@
+ml note
+
+lancer en ocaml : ctl+C ctl+E 
+
+fst p // x ; p=(x,y)
+snd p // y

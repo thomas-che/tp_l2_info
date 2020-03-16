@@ -1,0 +1,78 @@
+
+(* ex 1 *)
+
+let rec renverser = fun l ->
+  match l with
+  |[]->[]
+  |h::t-> renverser t @ [h] ;;
+
+renverser [1;2;3;4;5;6];;
+
+let rec reduction = fun op neutral l ->
+  match l with
+   |[]-> neutral
+   | h::t-> op h (reduction op neutral t) ;;
+
+reduction (fun x y ->y @ [x] ) [] [1;2;3;4;5;6];;
+
+  
+(* ex 2 *)
+
+let rec rep = fun nb c ->
+  match nb with
+  |0->[]
+  |_->[c] @ rep (nb-1) c ;;
+  
+rep 3 "a" ;;
+  
+let rec deCompression = fun l ->
+  match l with
+  |[]->[]
+  |h::t-> (rep (fst h) (snd h) ) @ deCompression t;;
+
+deCompression [(3,'a') ; (1,'b') ; (1,'a') ; (2,'b')];;
+
+
+
+  
+let rec occu = fun l c ->
+  match l with
+  |[]->0
+  |h::t->if h=c then  1+ occu t c
+	 else occu t c;;
+  
+occu ["a";"a";"a"] "a" ;;
+
+let rec compression = fun l ->
+  match l with
+  |[]->[]
+  |h::t-> occu
+
+
+
+  
+
+(* ex correction 2 *)
+  
+let rec deCompression = fun l ->
+  let rec aux1 = fun c ->
+    match (fst c, snd c) with
+    |(1,x) -> [x]
+    |(n,x) -> x:: aux1 (n-1, x)
+  in List.flatten(List.map aux1 l);;
+
+  
+
+deCompression [(3,'a') ; (1,'b') ; (1,'a') ; (2,'b')];;
+
+
+let rec compression = fun l ->
+  let rec aux = fun l n ->
+    match l with
+    |[]->[]
+    |h::[]->[(n,h)]
+    |h1::h2::t-> if h1=h2 then aux (h2::t) (n+1)
+		 else (n,h1) :: aux (h2::t) 1
+  in aux l 1;;
+
+compression ['a' ; 'a' ; 'a' ; 'b' ; 'a' ; 'b' ; 'b' ];;
