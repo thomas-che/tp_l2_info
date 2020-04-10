@@ -1,0 +1,227 @@
+
+
+(*###########################*)
+(*#       QUESTION 1        #*)
+(*###########################*)
+
+(*la fonction quadtree_full cree un arbre totalement noir de hauteur k tel que n=2**k *)
+(*
+   @param int n : la longeur d un cote du carre tel que n = 2**k
+   @return quadtree : un arbre totalement compose de feuilles noirs
+*)
+(*Fonctionnement :
+
+On appelle la fonction quadtree_full avec un entier n en parametre, qui fait appel a la fonction get_height qui elle meme retourne la hauteur k a partir de l entier n.
+Ensuite on construit l arbre a partir de la hauteur k.
+
+Lorsque k different de 1 on appelle recursivement la fonction quadtree_full en decrementant n de 1. Si n=1 alors nous sommes arrive a une feuille, en l ocurence ici, Noir.
+
+exemple d appel : quadtree_full 8;;
+ *)
+
+EXEMPLE : quadtree_full 8;; et affichage attendu et obtenu :
+
+# quadtree_full 8;;
+- : quadtree =
+Noeud
+ (Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+   Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+   Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+   Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir)),
+ Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir)),
+ Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir)),
+ Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir)))
+
+
+
+
+(*la fonction quadtree_empty cree un arbre totalement blanc de hauteur k tel que n=2**k *)
+(*
+   @param int n : la longeur d un cote du carre tel que n = 2**k
+   @return quadtree : un arbre totalement compose de feuilles blanc
+*)
+(*Fonctionnement :
+
+On appelle la fonction quadtree_empty avec un entier n en parametre, qui fait appel a la fonction get_height qui elle meme retourne la hauteur k a partir de l entier n.
+Ensuite on construit l arbre a partir de la hauteur k.
+
+Lorsque k different de 1 on appelle recursivement la fonction quadtree_empty en decrementant n de 1. Si n=1 alors nous sommes arrive a une feuille, en l ocurence ici, Blanc.
+
+exemple d appel : quadtree_empty 8;;
+ *)
+
+EXEMPLE : quadtree_empty 4;; et affichage attendu et obtenu :
+
+# quadtree_empty 4;;
+- : quadtree =
+Noeud (Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+ Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+ Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+ Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc))
+
+
+
+
+(*###########################*)
+(*#       QUESTION 2        #*)
+(*###########################*)
+
+(*la fonction inverse prend un quadtree a et inverse les couleurs des feuilles *)
+(*
+   @param quadtree a : quadtree a represente une image i
+   @return quadtree : le quadtree en retour represente l image i' de i apres application de la fonction inverse
+*)
+(* Fonctionnement :
+
+on parcourt recursivement notre quadtree a, si a correspond a un Noeud alors on applique la fonction inverse a chacune des feuilles de ce noeud.
+Si a est de type Feuille Blanc alors a devient Feuille Noir.
+Inversement, si a est de type Feuille Noir alors a devient Feuille Blanc.
+
+*)
+
+inversons un quadtree (de longeur n=4)tout blanc pour obtenir un quadtree tout noir
+EXEMPLE : inverse (quadtree_empty 4);; et affichage attendu et obtenu :
+
+# inverse (quadtree_empty 4);;
+- : quadtree =
+Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+ Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+ Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+ Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir))
+
+
+EXEMPLE : avec des feuilles de couleurs Noir et Blanc melangees
+initilisation pour exemple: val exp : quadtree =
+  Noeud
+   (Noeud
+     (Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+     Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+     Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+     Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc)),
+   Noeud (Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+    Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+    Noeud (Feuille Noir, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+    Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir)),
+   Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+    Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+    Noeud (Feuille Blanc, Feuille Blanc, Feuille Noir, Feuille Blanc),
+    Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc)),
+   Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+    Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+    Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+    Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir)))
+
+inversons le quadtree exp :
+# inverse exp;;
+- : quadtree =
+Noeud
+ (Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+   Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+   Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+   Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir)),
+ Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Blanc, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc)),
+ Noeud (Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Blanc, Feuille Noir),
+  Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir)),
+ Noeud (Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+  Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+  Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+  Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc)))
+
+
+
+(*###########################*)
+(*#       QUESTION 3        #*)
+(*###########################*)
+
+(*la fonction rotate prend un quadtree a et le fait tourner d un quart de tour vers la gauche *)
+(*
+   @param quadtree a : quadtree a represente une image i
+   @return quadtree : le quadtree en retour represente l image i' de i apres application de la fonction rotate
+*)
+(* Fonctionnement :
+
+on parcourt recursivement notre quadtree a, si a correspond a un Noeud alors on applique la fonction rotate a chacun des noeuds.
+On remplace les positions 1,2,3,4 par 2,3,4,1 pour chaque noeud.
+Si a est de type Feuille on ne fait rien.
+-----                 -----
+|1|2|                 |2|3|
+-----  ==> rotate ==> -----
+|4|3|                 |1|4|
+-----                 -----
+
+EXEMPLE : rotate exp3;; et affichage attendu et obtenu :
+initilisation pour exemple : val exp3 : quadtree =
+  Noeud (Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir),
+   Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+   Noeud (Feuille Blanc, Feuille Blanc, Feuille Noir, Feuille Blanc),
+   Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc))
+# rotate exp3;;
+
+- : quadtree =
+Noeud (Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+ Noeud (Feuille Blanc, Feuille Noir, Feuille Blanc, Feuille Blanc),
+ Noeud (Feuille Blanc, Feuille Blanc, Feuille Blanc, Feuille Blanc),
+ Noeud (Feuille Noir, Feuille Noir, Feuille Noir, Feuille Noir))
+
+
+
+(*###########################*)
+(*#       QUESTION 4        #*)
+(*###########################*)
+
+(*la fonction union prend 2 quadtree a et b, et on change la couleur des feuilles celon la regle *)
+(*
+   @param quadtree a : quadtree a represente une image i
+   @param quadtree b : quadtree b represente une image i'
+   @return quadtree c : le quadtree c en retour represente l union des 2 image i et i'
+*)
+(* Fonctionnement :
+
+on parcourt recursivement les 2 quadtree a et b de meme taille.
+Si a est un type feuille, nessesairement b aussi, alors on applique la regle d union definie:
+Blanc u X OU X u Blanc = X ; Noir u Noir = Noir.
+
+Pour ne pas avoir l erreur :"Warning 8: this pattern-matching is not exhaustive." j ai ajoute un dernier test pour ne pas comparer une Feuille avec un Noeud.
+
+*)
+
+EXEMPLE : union exa exb;; et affichage attendu et obtenu :
+initilisation pour exemple : val exa : quadtree =
+  Noeud (Feuille Blanc, Feuille Blanc, Feuille Noir, Feuille Noir)
+initilisation pour exemple : val exb : quadtree =
+  Noeud (Feuille Blanc, Feuille Noir, Feuille Noir, Feuille Blanc)
+
+# union exa exb;;
+- : quadtree =
+Noeud (Feuille Blanc, Feuille Noir, Feuille Noir, Feuille Noir)
+
+
+EXEMPLE : union exa exp;; (exp defini question 2) et affichage attendu et obtenu :
+Exception: Failure "error".
+Les 2 quadtree donc sortie d erreur prevue.
+
+
+
+
+
+
+
+
+
+
+
+
