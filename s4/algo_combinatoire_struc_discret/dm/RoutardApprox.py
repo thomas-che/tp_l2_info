@@ -3,13 +3,12 @@
 # Pour la file de priorité
 from priority_dict import priority_dict
 
-# Pour le choix aleatoire d un sommet de depart pour Prim
-import random
 
 
 def RoutardApprox(G):
-    l=prim(G)
-    parcousPrefixe(l[0],l[1])
+    l = prim(G)
+    liste_ordre_prefixe = parcousPrefixe(l[0],l[1])
+    ordreParcourSommet(G, liste_ordre_prefixe)
 
 
 def prim(G):
@@ -17,10 +16,8 @@ def prim(G):
 
     F = priority_dict() # init file priorite
 
-#test
     # sommet racine choisit arbitrairement
     r = next(iter(G)) # recupere le premier sommet dans le graphe G
-    print(r)
 
     F[r] = 0 
 
@@ -102,34 +99,110 @@ def parcousPrefixe(l_prim, l_pere_fils):
     print("\nliste pere fils = ", dic_voisin)
 
 
-    ordre = list()
-    racine = next(iter(dic_voisin))
-    ordre.append(racine)
+    liste_ordre = list() # init de la liste des sommets selon l ordre prexie
+    racine = next(iter(dic_voisin)) # choisi comme racine le premier element extait dans l exec de Prim, qui est donc la racine dans celui-ci egalement
+    liste_ordre.append(racine) # on le rajoute a la liste
 
-    rect_ordre(racine, dic_voisin, ordre)
+    # appel de la fonction recursive pour cree l ordre prefixe
+    rectListOrdre(racine, dic_voisin, liste_ordre)
 
-    print("\n liste ordre prefixer =",ordre)
+    print("\n liste liste_ordre prefixer =",liste_ordre)
 
-
-
-def rect_ordre (pere, dic_voisin, ordre):
-
-    print("##== pere :",pere, " ; \n##==dict :",dic_voisin," ; \n##==ordre :",ordre)
+    return liste_ordre
 
 
-    if dic_voisin[pere] :
+def rectListOrdre (pere, dic_voisin, liste_ordre):
+    ''' retourn l ordre prefixe selon le dictionaire passer et en choisisant le premier voisin qui deviendra le premier fils '''
 
-        for fils in dic_voisin[pere]:
-            print("===>> fils", fils)
-            ordre.append(fils)
-            ordre = rect_ordre(fils, dic_voisin, ordre)
-            print("ORDE",ordre)
+    if dic_voisin[pere] : # on s assure que le pere n est pas en realiter une feuille (= liste vide : [])
 
-        print("<< fin for >>")
-        return ordre
+        for fils in dic_voisin[pere] :
+            liste_ordre.append(fils) # ajout du fils, a la fin, dans la liste d ordre prefixe
+            liste_ordre = rectListOrdre(fils, dic_voisin, liste_ordre) # on lance recursivement la fonction avec comme pere le fils qui viens d etre ajoute precedament
+        return liste_ordre # retourne la liste mise a jour
+
     else :
-        print("<< dans le else >>")
-        return ordre
+        return liste_ordre # retourne la liste mise a jour
+
+
+
+def ordreParcourSommet (G, liste_ordre_prefixe):
+    ''' retourne la liste des sommets suivant l ordre prefixer tout en y apliquant le plus court chemin entre chacun des points. On obtient donc un liste des somet a suivre pas a pas pour tous les parcours en un minimum de temps'''
+
+    sigma = list() # init de la liste des sommet a parcour dans l ordre
+    sigma.append(liste_ordre_prefixe[0]) # on y ajoute le premier sommet de la liste d ordre prefixe
+
+    i=0 # init d un compteur
+    for sommet in liste_ordre_prefixe :
+
+        if sommet != liste_ordre_prefixe[len(liste_ordre_prefixe)-1] : # test si on est pas a la fin de la liste -1 pour ensuite pouvoir exec dijkstra ( ~ itineraire(..) ) sur le sommet et sommet+1
+
+            chemin = itineraire(G, sommet, liste_ordre_prefixe[i+1]) # on recupere le plus cour chemein entre le sommet et sommet+1 
+            del chemin[0] # retire du chemin le premier sommet qui est deja dans sigma
+            sigma += chemin # ajoute a la fin chemin a la liste sigma
+        i+=1
+
+    # On referme le cycle σ en revenant au point de départ
+    chemin = itineraire(G, sigma[len(sigma)-1], sigma[0])
+    del chemin[0]
+    sigma += chemin
+    print("\n==> sigma fin =",sigma)
+    
+    return sigma
+
+
+
+
+def dijkstra (G, pos_init):
+    ''' retourne un dictionaire avec la plus petite distance a partir de la position inital jusqu'a chaque sommet du graphe G '''
+
+    POID=0 # init constante poid ~ l[0]
+    PERE=1 # init constante pere ~ l[1]
+
+    attribut = dict() # init du dict attribut pour y stocker le poid et le pere
+
+    for v in G:
+        attribut[v] = [ float('+infinity'), None] # on fixe pour chaque sommet une POIDante a +oo et un pere a None
+
+
+    attribut[pos_init][POID] = 0 # fixe le premier poid a partir de la position initiale a 0
+
+    F= priority_dict() # cree file prioriter
+
+    # on peuple la file de prioriter avec les sommets et leurs poid respectifs
+    for v in G:
+        F[v] = attribut[v][POID]	
+
+    while F:
+        u = F.pop_smallest() # extrai le sommet avec le plus petit poid
+        
+        for v in G[u]:
+            #relacher
+            if attribut[v][POID] > (attribut[u][POID] + G[u][v]) :
+                attribut[v][POID] = attribut[u][POID] + G[u][v] # on modifie la poid du sommet v car on a trouver une arete qui reduit la poid pour atteindre v depuis u
+                F[v]=attribut[v][POID] # on met a jour les poids dans la file			
+                attribut[v][PERE] = u # change le pere de v par u
+    return attribut
+
+def itineraire(G, pos_init, pos_final):
+    ''' retourne le plus court itineraire entre la position initile et l aposition final'''
+    
+    PERE=1 # init constante pere ~ l[1]
+
+    attribut = dijkstra(G,pos_init) # on recupere un dictionaire avec la plus petite distance a partir de la position inital jusqu'a chaque sommet du graphe G
+
+    # on part pos_final et remonde les peres
+    itineraire = [pos_final]	
+    pere = attribut[pos_final][PERE]
+
+    while pere != pos_init:
+        itineraire.append(pere) # on ajoute le pere a la liste	
+        pere = attribut[pere][PERE] # on affecte au pere son propre pere
+
+    itineraire.append(pos_init) # ajout de la position initial a la liste
+    itineraire.reverse() # renverse la liste pour avoir les sommets dans l ordre
+
+    return itineraire
 
 
 if __name__ == "__main__":
