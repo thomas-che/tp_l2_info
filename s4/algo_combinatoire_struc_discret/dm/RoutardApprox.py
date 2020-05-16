@@ -17,10 +17,10 @@ def RoutardApprox(G):
 
     list_poid_div_sigma = list()
 
-    for i in range(0,10):
+    for i in range(0,100):
         print("#####################################")
 
-        G2,sigma = ConstruireGrapheDifficile(10)
+        G2,sigma = ConstruireGrapheDifficile(20)
         l = prim(G2)
         liste_ordre_prefixe = parcousPrefixe(l[0],l[1])
         liste_ordre_sommet = ordreParcourSommet(G2, liste_ordre_prefixe)
@@ -32,7 +32,7 @@ def RoutardApprox(G):
         list_poid_div_sigma.append(poid_div_sigma)
         print(G2)
     
-    # G2,sigma = ConstruireGrapheDifficile(6)
+    #G2,sigma = ConstruireGrapheDifficile(6)
     # l = prim(G2)
     # liste_ordre_prefixe = parcousPrefixe(l[0],l[1])
     # liste_ordre_sommet = ordreParcourSommet(G2, liste_ordre_prefixe)
@@ -172,7 +172,7 @@ def rectListOrdre (pere, dic_voisin, liste_ordre):
 def ordreParcourSommet (G, liste_ordre_prefixe):
     ''' retourne la liste des sommets suivant l ordre prefixer tout en y apliquant le plus court chemin entre chacun des points. On obtient donc un liste des somet a suivre pas a pas pour tous les parcours en un minimum de temps'''
 
-    print("\n\t0000000=> dans ordreParcourSommet <=0000000\n")
+#    print("\n\t0000000=> dans ordreParcourSommet <=0000000\n")
 
     sigma = list() # init de la liste des sommet a parcour dans l ordre
     sigma.append(liste_ordre_prefixe[0]) # on y ajoute le premier sommet de la liste d ordre prefixe
@@ -180,18 +180,18 @@ def ordreParcourSommet (G, liste_ordre_prefixe):
     i=0 # init d un compteur
     for sommet in liste_ordre_prefixe :
 
-        print("\n\t0000000=> dans le for <=0000000\n")
+#        print("\n\t0000000=> dans le for <=0000000\n")
 
         if i < len(liste_ordre_prefixe)-1 : # test si on est pas a la fin de la liste -1 pour ensuite pouvoir exec dijkstra ( ~ itineraire(..) ) sur le sommet et sommet+1
 
-            print("\n\t0000000=> dans le if <=0000000\n")
+#            print("\n\t0000000=> dans le if <=0000000\n")
 
             chemin = itineraire(G, sommet, liste_ordre_prefixe[i+1]) # on recupere le plus cour chemein entre le sommet et sommet+1 
             del chemin[0] # retire du chemin le premier sommet qui est deja dans sigma
             sigma += chemin # ajoute a la fin chemin a la liste sigma
         i+=1
 
-    print("\n\t0000000=> fin for <=0000000\n")
+ #   print("\n\t0000000=> fin for <=0000000\n")
     # On referme le cycle σ en revenant au point de départ
     chemin = itineraire(G, sigma[len(sigma)-1], sigma[0])
     del chemin[0]
@@ -224,15 +224,15 @@ def dijkstra (G, pos_init):
         F[v] = attribut[v][POID]	
 
     while F:
-        print("\n\t0000000=> dans dijkstra while <=0000000\n")
+#        print("\n\t0000000=> dans dijkstra while <=0000000\n")
         u = F.pop_smallest() # extrai le sommet avec le plus petit poid
         
         for v in G[u]:
-            print("\n\t0000000=> v=",v," <=0000000\n")
+#            print("\n\t0000000=> v=",v," <=0000000\n")
             #relacher
             if attribut[v][POID] > (attribut[u][POID] + G[u][v]) :
-                print("\n\t0000000=> dans le if <=0000000\n")
-                print("\n\t0000000=> attribut[v][POID]=",attribut[v][POID]," ; new =",attribut[u][POID] + G[u][v],"<=0000000\n")
+#                print("\n\t0000000=> dans le if <=0000000\n")
+#                print("\n\t0000000=> attribut[v][POID]=",attribut[v][POID]," ; new =",attribut[u][POID] + G[u][v],"<=0000000\n")
                 attribut[v][POID] = attribut[u][POID] + G[u][v] # on modifie la poid du sommet v car on a trouver une arete qui reduit la poid pour atteindre v depuis u
                 F[v]=attribut[v][POID] # on met a jour les poids dans la file			
                 attribut[v][PERE] = u # change le pere de v par u
@@ -249,10 +249,10 @@ def itineraire(G, pos_init, pos_final):
     itineraire = [pos_final]	
     pere = attribut[pos_final][PERE]
 
-    print("\n\t0000000=> dans itineraie <=0000000\n")
+#    print("\n\t0000000=> dans itineraie <=0000000\n")
 
     while pere != pos_init:
-        print("\n\t0000000=> dans le while <=0000000\n")
+#        print("\n\t0000000=> dans le while <=0000000\n")
         itineraire.append(pere) # on ajoute le pere a la liste	
         pere = attribut[pere][PERE] # on affecte au pere son propre pere
 
@@ -296,34 +296,37 @@ def ConstruireGrapheDifficile(n) :
 
         if sommet == 'S0' :
             sigma.append(sommet)
-            poid = round(random.uniform(100, 1000), 6)
+            poid = round(random.uniform(100, 1000), 9)
             print("### poid=",poid)
             reste_poid = poid*2 -1
             print("##### reste poid =",reste_poid)
 
             voisin = 'S1'
-            G = ajoutVoisin(G, sommet, voisin, 0.000001)
+            G = ajoutVoisin(G, sommet, voisin, 0.000000001)
             voisin = 'S2'
-            G = ajoutVoisin(G, sommet, voisin, reste_poid - 0.000001)
+            G = ajoutVoisin(G, sommet, voisin, reste_poid - 0.000000001)
         elif sommet == 'S1':
             sigma.append(sommet)
         elif sommet == sommet_de_fin :
             sigma.insert(2, sommet)
             voisin = 'S1'
-            poid = round(reste_poid, 6) +1
+            poid = round(reste_poid, 9) +1
             print("### dernier poid=",poid)
             print("##### fin reste poid =",reste_poid+1-poid)
             G = ajoutVoisin(G, sommet, voisin, poid)
-            G = ajoutVoisinRandom(G, sommet, n-1)
         else :
             voisin = 'S'+str(i+1)
             sigma.insert(2, sommet)
-            poid = round(random.uniform(0.000001, reste_poid-(reste_poid/10)), 6)
+            poid = round(random.uniform(0.000000001, (reste_poid//2)), 9)
             print("### poid=",poid)
-            print("##### soustraction =",round(reste_poid - poid, 6))
-            reste_poid = round(reste_poid - poid, 6)
+            print("##### soustraction =",round(reste_poid - poid, 9))
+            reste_poid = round(reste_poid - poid, 9)
             print("##### reste poid =",reste_poid)
             G = ajoutVoisin(G, sommet, voisin, poid)
+
+
+    for i in range(0,n):
+        G = ajoutVoisinRandom(G, sommet, n-1)
 
 
     #print("\n mon graphe :\n\n",G,"\n\n le routad :")
@@ -339,8 +342,8 @@ def ajoutVoisin(G,sommet,voisin,poid):
     return G
 
 def ajoutVoisinRandom(G, sommet, taille):
-    # nb_rep = random.randint(0,(taille//2))
-    nb_rep = 5
+    nb_rep = random.randint(0,(taille//2))
+    #nb_rep = 5
     print("77777777==>",nb_rep)
     for i in range(0,nb_rep) :
         id_sommet = random.randint(3,taille-2)
