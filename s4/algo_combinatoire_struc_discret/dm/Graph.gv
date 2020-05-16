@@ -1,0 +1,12 @@
+graph {
+	a [label="sommet a"]
+	b [label="sommet b"]
+	c [label="sommet c"]
+	d [label="sommet d"]
+	e [label="sommet e"]
+	a -- b
+	b -- c
+	b -- d
+	c -- d
+	d -- e
+}

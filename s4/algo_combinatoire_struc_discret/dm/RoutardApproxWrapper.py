@@ -7,9 +7,9 @@ import json
 
 if __name__ == "__main__":
 
-	for ficgraphe in ["graphe_test4.json"]:
+	for ficgraphe in ["graphe_th3.json"]:
 
-		print("\n\n ==> graphe : ",ficgraphe," <==")
+		print("\n\n ==> graphe : ",ficgraphe," <==\n")
 
 		with open(ficgraphe, "r", encoding="utf-8") as fichier:
 			G = json.load(fichier)

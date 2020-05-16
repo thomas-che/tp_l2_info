@@ -3,12 +3,56 @@
 # Pour la file de priorité
 from priority_dict import priority_dict
 
+# Pour avoir un nb aleatoir
+import random
 
 
 def RoutardApprox(G):
-    l = prim(G)
-    liste_ordre_prefixe = parcousPrefixe(l[0],l[1])
-    ordreParcourSommet(G, liste_ordre_prefixe)
+    # l = prim(G)
+    # liste_ordre_prefixe = parcousPrefixe(l[0],l[1])
+    # liste_ordre_sommet = ordreParcourSommet(G, liste_ordre_prefixe)
+    # w = calcPoidListSommet(G,liste_ordre_sommet)
+    # print("\n\n==> poids du chemin pas a pas : =>",w,"<=\n")
+
+
+    list_poid_div_sigma = list()
+
+    for i in range(0,10):
+        print("#####################################")
+
+        G2,sigma = ConstruireGrapheDifficile(10)
+        l = prim(G2)
+        liste_ordre_prefixe = parcousPrefixe(l[0],l[1])
+        liste_ordre_sommet = ordreParcourSommet(G2, liste_ordre_prefixe)
+        w = calcPoidListSommet(G2,liste_ordre_sommet)
+        print("\n\n==> poids du chemin pas a pas : =>",w,"<=\n")
+        print("\nsimga* : ",sigma," poid ==>", calcPoidListSommet(G2,sigma) ,"<==")
+        poid_div_sigma = w/calcPoidListSommet(G2,sigma)
+        print("\npoid/sigma = ",poid_div_sigma)
+        list_poid_div_sigma.append(poid_div_sigma)
+        print(G2)
+    
+    # G2,sigma = ConstruireGrapheDifficile(6)
+    # l = prim(G2)
+    # liste_ordre_prefixe = parcousPrefixe(l[0],l[1])
+    # liste_ordre_sommet = ordreParcourSommet(G2, liste_ordre_prefixe)
+    # w = calcPoidListSommet(G2,liste_ordre_sommet)
+    # print("\n\n==> poids du chemin pas a pas : =>",w,"<=\n")
+    # print("\nsimga* : ",sigma," poid ==>", calcPoidListSommet(G2,sigma) ,"<==")
+    # poid_div_sigma = w/calcPoidListSommet(G2,sigma)
+    # print("\npoid/sigma = ",poid_div_sigma)
+    # list_poid_div_sigma.append(poid_div_sigma)
+
+
+    print("\n\nla liste : ==>",list_poid_div_sigma,"<==\n\n")
+
+    summ = 0
+    compteur = 0
+    for i in list_poid_div_sigma :
+        summ += i
+        compteur +=1
+    avg = summ/compteur
+    print("\n avg = ", avg)
 
 
 def prim(G):
@@ -46,8 +90,7 @@ def prim(G):
                 F[v] = weight_u_v # modifie le poids de v 
                 weight[(u,v)] = weight_u_v # stocker le poids entre u et v
 
-    # Calcul du poids w de l arbre couvrant
-    w=0 # init du poids a 0
+    
 
     list_pere_sommet=list() # init liste pere sommet
     for sommet in list_sommet_extrait:
@@ -55,8 +98,8 @@ def prim(G):
 
 #test    
     print("algo prim = ", list_sommet_extrait)
-    print("list pere sommet = ", list_pere_sommet)
-    return [list_sommet_extrait,list_pere_sommet] # return liste chronologique des sommets atteint, la liste des [pere[sommet], sommet]
+    print("\nlist pere sommet = ", list_pere_sommet)
+    return [list_sommet_extrait,list_pere_sommet] # return liste chronologique des sommets atteint, la liste des [pere[sommet], sommet] 
     
 
 
@@ -129,24 +172,31 @@ def rectListOrdre (pere, dic_voisin, liste_ordre):
 def ordreParcourSommet (G, liste_ordre_prefixe):
     ''' retourne la liste des sommets suivant l ordre prefixer tout en y apliquant le plus court chemin entre chacun des points. On obtient donc un liste des somet a suivre pas a pas pour tous les parcours en un minimum de temps'''
 
+    print("\n\t0000000=> dans ordreParcourSommet <=0000000\n")
+
     sigma = list() # init de la liste des sommet a parcour dans l ordre
     sigma.append(liste_ordre_prefixe[0]) # on y ajoute le premier sommet de la liste d ordre prefixe
 
     i=0 # init d un compteur
     for sommet in liste_ordre_prefixe :
 
-        if sommet != liste_ordre_prefixe[len(liste_ordre_prefixe)-1] : # test si on est pas a la fin de la liste -1 pour ensuite pouvoir exec dijkstra ( ~ itineraire(..) ) sur le sommet et sommet+1
+        print("\n\t0000000=> dans le for <=0000000\n")
+
+        if i < len(liste_ordre_prefixe)-1 : # test si on est pas a la fin de la liste -1 pour ensuite pouvoir exec dijkstra ( ~ itineraire(..) ) sur le sommet et sommet+1
+
+            print("\n\t0000000=> dans le if <=0000000\n")
 
             chemin = itineraire(G, sommet, liste_ordre_prefixe[i+1]) # on recupere le plus cour chemein entre le sommet et sommet+1 
             del chemin[0] # retire du chemin le premier sommet qui est deja dans sigma
             sigma += chemin # ajoute a la fin chemin a la liste sigma
         i+=1
 
+    print("\n\t0000000=> fin for <=0000000\n")
     # On referme le cycle σ en revenant au point de départ
     chemin = itineraire(G, sigma[len(sigma)-1], sigma[0])
     del chemin[0]
     sigma += chemin
-    print("\n==> sigma fin =",sigma)
+    print("\nsigma =",sigma)
     
     return sigma
 
@@ -174,11 +224,15 @@ def dijkstra (G, pos_init):
         F[v] = attribut[v][POID]	
 
     while F:
+        print("\n\t0000000=> dans dijkstra while <=0000000\n")
         u = F.pop_smallest() # extrai le sommet avec le plus petit poid
         
         for v in G[u]:
+            print("\n\t0000000=> v=",v," <=0000000\n")
             #relacher
             if attribut[v][POID] > (attribut[u][POID] + G[u][v]) :
+                print("\n\t0000000=> dans le if <=0000000\n")
+                print("\n\t0000000=> attribut[v][POID]=",attribut[v][POID]," ; new =",attribut[u][POID] + G[u][v],"<=0000000\n")
                 attribut[v][POID] = attribut[u][POID] + G[u][v] # on modifie la poid du sommet v car on a trouver une arete qui reduit la poid pour atteindre v depuis u
                 F[v]=attribut[v][POID] # on met a jour les poids dans la file			
                 attribut[v][PERE] = u # change le pere de v par u
@@ -195,7 +249,10 @@ def itineraire(G, pos_init, pos_final):
     itineraire = [pos_final]	
     pere = attribut[pos_final][PERE]
 
+    print("\n\t0000000=> dans itineraie <=0000000\n")
+
     while pere != pos_init:
+        print("\n\t0000000=> dans le while <=0000000\n")
         itineraire.append(pere) # on ajoute le pere a la liste	
         pere = attribut[pere][PERE] # on affecte au pere son propre pere
 
@@ -204,6 +261,94 @@ def itineraire(G, pos_init, pos_final):
 
     return itineraire
 
+
+def calcPoidListSommet(G,liste_ordre_sommet) :
+    ''' calcule le poid d un chemin donner par la liste d ordre des sommets '''
+
+    w=0 # init du poids a 0
+    i=0 # init d un compteur
+    for sommet in liste_ordre_sommet :
+        
+        if i < len(liste_ordre_sommet)-1 :
+            #print("De ",sommet," a ",liste_ordre_sommet[i+1]," = ",getWeight(G, sommet, liste_ordre_sommet[i+1]))
+            w += getWeight(G, sommet, liste_ordre_sommet[i+1])
+        i+=1
+    
+    #print("\n\n==> poids du chemin pas a pas : =>",w,"<=\n")
+    return w
+
+
+
+def ConstruireGrapheDifficile(n) :
+
+    G = dict()
+
+    for i in range (0,n):
+        nom_sommet = 'S'+str(i)
+        G[nom_sommet] = dict()
+
+    sigma = list()
+
+    for i in range (0,n):
+        
+        sommet = 'S'+str(i)
+        sommet_de_fin = 'S'+str(n-1)
+
+        if sommet == 'S0' :
+            sigma.append(sommet)
+            poid = round(random.uniform(100, 1000), 6)
+            print("### poid=",poid)
+            reste_poid = poid*2 -1
+            print("##### reste poid =",reste_poid)
+
+            voisin = 'S1'
+            G = ajoutVoisin(G, sommet, voisin, 0.000001)
+            voisin = 'S2'
+            G = ajoutVoisin(G, sommet, voisin, reste_poid - 0.000001)
+        elif sommet == 'S1':
+            sigma.append(sommet)
+        elif sommet == sommet_de_fin :
+            sigma.insert(2, sommet)
+            voisin = 'S1'
+            poid = round(reste_poid, 6) +1
+            print("### dernier poid=",poid)
+            print("##### fin reste poid =",reste_poid+1-poid)
+            G = ajoutVoisin(G, sommet, voisin, poid)
+            G = ajoutVoisinRandom(G, sommet, n-1)
+        else :
+            voisin = 'S'+str(i+1)
+            sigma.insert(2, sommet)
+            poid = round(random.uniform(0.000001, reste_poid-(reste_poid/10)), 6)
+            print("### poid=",poid)
+            print("##### soustraction =",round(reste_poid - poid, 6))
+            reste_poid = round(reste_poid - poid, 6)
+            print("##### reste poid =",reste_poid)
+            G = ajoutVoisin(G, sommet, voisin, poid)
+
+
+    #print("\n mon graphe :\n\n",G,"\n\n le routad :")
+
+    #print("\nsimga* : ",sigma," poid ==>", calcPoidListSommet(G,sigma) ,"<==")
+
+    return [G,sigma]
+
+
+def ajoutVoisin(G,sommet,voisin,poid):
+    G[sommet][voisin] = poid
+    G[voisin][sommet] = poid
+    return G
+
+def ajoutVoisinRandom(G, sommet, taille):
+    # nb_rep = random.randint(0,(taille//2))
+    nb_rep = 5
+    print("77777777==>",nb_rep)
+    for i in range(0,nb_rep) :
+        id_sommet = random.randint(3,taille-2)
+        print("88888==>",id_sommet)
+        voisin = 'S'+str(id_sommet)
+        poid = calcPoidListSommet(G,itineraire(G, sommet, voisin)) + 1
+        G = ajoutVoisin(G,sommet,voisin,poid)
+    return G
 
 if __name__ == "__main__":
     pass
