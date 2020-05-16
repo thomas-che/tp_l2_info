@@ -6,6 +6,10 @@ from priority_dict import priority_dict
 # Pour avoir un nb aleatoir
 import random
 
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.close('all')
 
 def RoutardApprox(G):
     # l = prim(G)
@@ -17,7 +21,7 @@ def RoutardApprox(G):
 
     list_poid_div_sigma = list()
 
-    for i in range(0,100):
+    for i in range(0,1):
         print("#####################################")
 
         G2,sigma = ConstruireGrapheDifficile(20)
@@ -31,6 +35,7 @@ def RoutardApprox(G):
         print("\npoid/sigma = ",poid_div_sigma)
         list_poid_div_sigma.append(poid_div_sigma)
         print(G2)
+        afficherGraphe(G2)
     
     #G2,sigma = ConstruireGrapheDifficile(6)
     # l = prim(G2)
@@ -352,6 +357,54 @@ def ajoutVoisinRandom(G, sommet, taille):
         poid = calcPoidListSommet(G,itineraire(G, sommet, voisin)) + 1
         G = ajoutVoisin(G,sommet,voisin,poid)
     return G
+
+
+
+
+def afficherGraphe(G) :
+
+    pt = dict()
+
+
+
+    for u in G :
+
+
+
+        nom_var_x = str(u)+"_x"
+        nom_var_y = str(u)+"_y"
+
+
+        pt_u = [random.randint(1,999), random.randint(1,999)]
+
+        pt[u] = pt_u
+
+    print("\npppppppppppppppppppppppppppppppppppppppp")
+    print(pt)
+
+    for u in G :
+
+        list_pt_x = [ pt[u][0] ]
+        list_pt_y = [ pt[u][1] ]
+
+        c = random.randint(100000,999999)
+
+        plt.plot([ pt[u][0] ],[ pt[u][1] ], 'o', label=str(u), markeredgewidth = 8)
+        plt.legend()
+
+        for v in G[u] :
+            list_pt_x.append(pt[v][0])
+            list_pt_y.append(pt[v][1])
+
+            plt.figure(1)
+            plt.plot(list_pt_x,list_pt_y, color='black', linewidth=1)
+            
+
+    plt.show(1)    
+
+    
+
+
 
 if __name__ == "__main__":
     pass
