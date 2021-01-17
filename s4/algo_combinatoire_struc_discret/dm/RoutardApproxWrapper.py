@@ -8,7 +8,7 @@ import json
 if __name__ == "__main__":
 
 
-	for ficgraphe in ["graphe_th3.json"]:
+	for ficgraphe in ["graphe1.json"]:
 
 		print("\n\n ==> graphe : ",ficgraphe," <==\n")
 
